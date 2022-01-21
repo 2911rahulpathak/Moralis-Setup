@@ -1,0 +1,36 @@
+<!--
+	1) AUTHENTICATE WITH METAMASK
+	2) ADD USER TO DB
+	3) ADD MORE DATA TO THE USER PROFILE
+-->
+
+<html>
+  <head>
+    <title>Metamask Demo</title>
+
+	<!-- Importing the libraries we need -->
+	<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+	<script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+
+  </head>
+
+  <body>
+
+	<button onclick="login()">MORALIS METAMASK LOGIN</button>
+
+	<script>
+		Moralis.initialize("iK2SmC7a6q0g2Y9TfKjOKBSXdBuO6n0mxUt1BInr"); // Application id from moralis.io
+		Moralis.serverURL = "https://ctrjjdtcek6e.usemoralis.com:2053/server"; //Server url from moralis.io
+	
+		async function login(){
+			console.log("login clicked");
+			var user = await Moralis.Web3.authenticate();
+			if(user){
+				console.log(user);
+				user.save();
+			}
+		}
+	
+	</script>
+  </body>
+</html>
